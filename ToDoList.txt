@@ -1,0 +1,15 @@
+Goals checklist for rock paper die:
+
+Implement the grid into a game manager script [done]
+
+Implement Character controller script [kinda done need mini game]
+
+Implement Player Input script to feed input into character turn script []
+
+Implement Enemy input script that makes use of a pathfinding mechanic to path towards the player, this should also feed into character turn script []
+
+Implement Rock Paper Scissors mini game script, player and enemy input scripts should both also feed into this script []
+
+Impement boss who will use the enemy movement EXCEPT for movement []
+
+Test game loop and figure out stretch goals
