@@ -13,6 +13,7 @@ public abstract class CharacterController : MonoBehaviour
         Wait //wait will be the default until the game manager changes it
     }
     public CurrentState currentState = CurrentState.Wait;
+    public Vector2 currentTile = Vector2.zero;
     public abstract void MoveCharacter();
     public abstract GameObject[] CheckCharacter();
     public void ResolveConflicts(GameObject opponent) 
