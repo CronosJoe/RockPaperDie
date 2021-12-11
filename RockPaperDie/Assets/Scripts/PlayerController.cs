@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 
-public class PlayerController : CharacterController
+public class PlayerController : PieceController
 {
     //This will be used for the different inputs that the user can have before the move state is finished
     enum inputs 
@@ -18,6 +18,7 @@ public class PlayerController : CharacterController
     public PlayerInput input;
     //storing the user's current input since they can only move once per move action
     inputs currentInput;
+    //seting up starting position
     
     //enabling all of our input events
     private void OnEnable()
@@ -76,7 +77,22 @@ public class PlayerController : CharacterController
     {
         //the user is now in the check state their input won't do anything during this state
         //take the current input and current tile then move in the given direction
-        throw new System.NotImplementedException();
+        switch (currentInput)
+        {
+            case inputs.Up:
+                currentTile.y++;
+                break;
+            case inputs.Down:
+                currentTile.y--;
+                break;
+            case inputs.Left:
+                currentTile.x--;
+                break;
+            case inputs.Right:
+                currentTile.x++;
+                break;
+        }
+        SetPosition();
     }
     public override GameObject[] CheckCharacter()
     {

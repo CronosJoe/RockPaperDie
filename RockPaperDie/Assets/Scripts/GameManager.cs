@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] int mapHeight = 10;
     Vector3Int mapStartingSpace = new Vector3Int(0, 0, 0); //later this variable will probably be put into a text document
     //Map data will be stored in this list, each tile will have the MapTileClass on it to store if it's walkable and everything else it might need
-    GameObject[,] mapTiles; //going to default the map to a 10 by 10 grid, down the line I might want to have this generated
+    public GameObject[,] mapTiles; //going to default the map to a 10 by 10 grid, down the line I might want to have this generated
     [Header("BoardPieces")]
     //character list
-    [SerializeField] List<GameObject> charactersOnBoard = new List<GameObject>(); // each character should handle their own data in their own scripts 
+    [SerializeField] List<PieceController> charactersOnBoard = new List<PieceController>(); // each character should handle their own data in their own scripts 
     //prefab data for instantiation
     [Header("Prefabs")]
     //map tiles
@@ -30,7 +31,16 @@ public class GameManager : MonoBehaviour
         mapTiles = new GameObject[mapWidth, mapHeight];
         //here I will want to instantiate the board
         BuildingTheBoard(mapStartingSpace);
+        SettingThePieces();
         //here I will want to instantiate the enemies
+    }
+    //placing the characters onto the board
+    private void SettingThePieces()
+    {
+        for(int i = 0; i < charactersOnBoard.Count; i++) 
+        {
+            charactersOnBoard[i].SetPosition();
+        }
     }
 
     //Creating the board
